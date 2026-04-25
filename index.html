@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Resume Builder</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDj3rmm_OGAud51N7MBAKOdPEz4YRzcQbw",
+    authDomain: "resume-portfolio-generat-53b8b.firebaseapp.com",
+    projectId:"resume-portfolio-generat-53b8b",
+
+  };
+
+  const app = initializeApp(firebaseConfig);
+  window.db = getFirestore(app);
+</script>
+</head>
+
+<body>
+
+<nav>
+  <h2>AI Resume Builder</h2>
+  <div>
+    <button onclick="showTab('home')">Home</button>
+    <button onclick="showTab('form')">Form</button>
+    <button onclick="showTab('resume')">Resume</button>
+    <button onclick="showTab('portfolio')">Portfolio</button>
+  </div>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="tab">
+  <div class="glass">
+    <h1>Build Professional Resume & Portfolio</h1>
+    <p>AI-powered resume generator with modern UI</p>
+  </div>
+</section>
+
+<!-- FORM -->
+<section id="form" class="tab hidden">
+<div class="glass form-box">
+
+<h2>Resume Details</h2>
+
+<input id="name" placeholder="Full Name">
+<input id="email" placeholder="Email">
+<input id="phone" placeholder="Phone">
+<input id="github" placeholder="GitHub Link">
+<input id="linkedin" placeholder="LinkedIn Link">
+
+<input id="role" placeholder="Job Role">
+<input id="experienceLevel" placeholder="Experience Level">
+
+<textarea id="education" placeholder="Education"></textarea>
+<textarea id="skills" placeholder="Skills"></textarea>
+<textarea id="projects" placeholder="Projects"></textarea>
+<textarea id="experience" placeholder="Experience"></textarea>
+<textarea id="certifications" placeholder="Certifications"></textarea>
+
+<div class="btn-group">
+<button onclick="generateAI()">Generate AI</button>
+<button onclick="generateResume()">Generate Resume</button>
+</div>
+
+</div>
+</section>
+
+<!-- RESUME -->
+<section id="resume" class="tab hidden">
+<div class="glass resume-box">
+<div id="resumeOutput"></div>
+<h3>ATS Score: <span id="ats"></span></h3>
+<button onclick="downloadPDF()">Download PDF</button>
+</div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" class="tab hidden">
+<div class="glass">
+<div id="portfolioOutput"></div>
+</div>
+</section>
+<script type="module" src="script.js"></script>
+</body>
+</html>
